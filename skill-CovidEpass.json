@@ -1,0 +1,374 @@
+{
+  "intents": [
+    {
+      "intent": "Covid-Epass",
+      "examples": [
+        {
+          "text": "How to get a pass"
+        },
+        {
+          "text": "How do I book for a pass"
+        },
+        {
+          "text": "How to get a covid epass"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Defination",
+      "examples": [
+        {
+          "text": "What is a Epass"
+        },
+        {
+          "text": "what is a pass"
+        },
+        {
+          "text": "Why do we need a pass"
+        },
+        {
+          "text": "what do you mean by a pass"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Goodbye",
+      "examples": [
+        {
+          "text": "See you"
+        },
+        {
+          "text": "See ya"
+        },
+        {
+          "text": "Bye"
+        },
+        {
+          "text": "take care"
+        },
+        {
+          "text": "Staysafe"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Thankyou",
+      "examples": [
+        {
+          "text": "Thanks a lot"
+        },
+        {
+          "text": "Gracias"
+        },
+        {
+          "text": "thanks"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "General_Greetings",
+      "examples": [
+        {
+          "text": "Hey you"
+        },
+        {
+          "text": "Hello Agent"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hey there"
+        },
+        {
+          "text": "Hey what's up"
+        },
+        {
+          "text": "hey how are things going on"
+        },
+        {
+          "text": "Good day"
+        },
+        {
+          "text": "Good Afternoon"
+        },
+        {
+          "text": "Good morning"
+        },
+        {
+          "text": "Good Evening"
+        }
+      ],
+      "description": "Greetings"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "teller",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "counter",
+          "synonyms": [
+            "desk",
+            "clerk"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "epass",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "pass",
+          "synonyms": [
+            "covidpass",
+            "travelpass",
+            "visitpass"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "no-of-passes",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "passtype",
+          "synonyms": [
+            "medicalhelp",
+            "family"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Teller",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "How To Get An E-Pass?"
+              },
+              {
+                "text": "For applying an e-pass, you need to visit the official website of the state or union territory."
+              },
+              {
+                "text": "After selecting the 'apply e-pass' tab, you need to fill up all the important details such as name, address, mobile number, vehicle number, vehicle registration number, government ID, district and town."
+              },
+              {
+                "text": "After filling all these details, you also need to furnish supporting documents for the same. And, now submit the application for an e-pass."
+              },
+              {
+                "text": "You will receive a message from the authority once the e-pass is approved."
+              },
+              {
+                "text": "Carrying the e-pass along with you is mandatory, which can be in a printed form or an e-copy. It should be furnished to the police or any other authority inquiring about the travel."
+              },
+              {
+                "text": "The residents of Delhi, Haryana, Karnataka, Odisha, Puducherry, Punjab, Rajasthan and Telangana can apply for an e-pass through - https://covidpass.egovernments.org/requester-dashboard/register. Several states are also offering e-passes through the state's official website or police department website. The citizens residing in Mumbai can get their e-passes from the website - www.covid19.mhpolice.in. Moreover, the Chennai residents too can apply for an e-pass through Chennai police website."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1590585511505",
+      "conditions": "@teller",
+      "dialog_node": "node_9_1590587366167",
+      "previous_sibling": "node_3_1590587067040"
+    },
+    {
+      "type": "standard",
+      "title": "Epass",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "The e-pass consists of important details about the citizen such as name, address, contact number, the validity of the e-pass, purpose of travel and more. The e-pass will be issued to a designated location only for a limited period. The e-pass also mentions the number of passengers that would be accompanying the person."
+              },
+              {
+                "text": "Applying for an e-pass does not mean that it is granted. The local administration authorities will validate all the important details before issuing an e-pass. The citizens can apply for an e-pass through state government's individual website."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1590585511505",
+      "conditions": "@epass",
+      "dialog_node": "node_3_1590587067040"
+    },
+    {
+      "type": "standard",
+      "title": "Greeting",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "hi there, Iam here to help you. What can I do for you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#General_Greetings",
+      "dialog_node": "node_8_1590584617080",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Thank You",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Glad to be of assistance. Have a good day!"
+              },
+              {
+                "text": "you're very welcome"
+              },
+              {
+                "text": "Anytime"
+              },
+              {
+                "text": "Enjoy your day!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Thankyou",
+      "dialog_node": "node_6_1590584986576",
+      "previous_sibling": "node_3_1590585511505"
+    },
+    {
+      "type": "standard",
+      "title": "Covid epass",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "E-pass is essentially an electronic pass issued online by the state government to facilitate the commute during an emergency or urgent situation. People related to the movement of essential goods and supplies throughout the country will require to get an e-pass. On the other hand, people willing to travel only in case of an emergency should apply for an e-pass which will let them aid their movement during these unprecedented times. And, they will have to display the e-pass wherever asked by the officials."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_3_1590587067040"
+      },
+      "conditions": "#Covid-Epass",
+      "dialog_node": "node_3_1590585511505",
+      "previous_sibling": "node_8_1590584617080"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_6_1590584986576",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": " Hello, I’m a demo customer care virtual assistant to show you the basics.  I can help with covid epass and how to get a pass"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "CovidEpass",
+  "language": "en",
+  "description": ""
+}
